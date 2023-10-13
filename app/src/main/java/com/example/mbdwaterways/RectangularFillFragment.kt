@@ -24,68 +24,26 @@ class RectangularFillFragment : Fragment() {
         val view = layoutInflater.inflate(R.layout.rectangular_fragment,container, false)
 
         val sharedPreference = context?.getSharedPreferences("rectangular_data", Context.MODE_PRIVATE)
-        val rect_y = activity?.findViewById<EditText>(R.id.h_dynamic)
-        val rect_b = activity?.findViewById<EditText>(R.id.b_dynamic)
 
-        var calculateButton = activity?.findViewById<Button>(R.id.calculate_button)
+        val rect_h = view.findViewById<EditText>(R.id.h_dynamic)
+        val rect_b = view.findViewById<EditText>(R.id.b_dynamic)
+
+        var calculateButton = view.findViewById<Button>(R.id.calculate_button)
 
         calculateButton?.setOnClickListener{
 
-            val intent = Intent(context,RectangularResults::class.java)
-            startActivity(intent)
+            Log.e("calculate", "calculate")
+
+            if(rect_h.text.toString() != "" && rect_b.text.toString() != ""){
+                val intent = Intent(context,RectangularResults::class.java)
+
+                intent.putExtra("rect_h",rect_h.text.toString())
+                intent.putExtra("rect_b",rect_b.text.toString())
+
+                startActivity(intent)
+            }
         }
 
-
-
-
-
-
-
-
-
-
-        rect_y?.addTextChangedListener(object : TextWatcher{
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                TODO("Not yet implemented")
-                Log.e("RECT_Y_UPDATED", "rect_y_updated")
-
-            }
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                // update shared preferences
-
-                with(sharedPreference?.edit()){
-                    this?.putString("rect_y", rect_y.toString())
-                    this?.apply()
-                }
-            }
-
-            override fun afterTextChanged(p0: Editable?) {
-                TODO("Not yet implemented")
-            }
-
-        })
-
-        rect_b?.addTextChangedListener(object : TextWatcher{
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                TODO("Not yet implemented")
-            }
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                // update shared preferences
-
-                with(sharedPreference?.edit()){
-                    this?.putString("rect_b", rect_b.toString())
-                    this?.apply()
-                    Toast.makeText(activity, "doneeee", Toast.LENGTH_SHORT).show()
-                }
-            }
-
-            override fun afterTextChanged(p0: Editable?) {
-                TODO("Not yet implemented")
-            }
-
-        })
 
         return view;
     }
