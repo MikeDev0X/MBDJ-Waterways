@@ -13,7 +13,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-
+import androidx.fragment.app.FragmentManager
 
 
 class Selection : AppCompatActivity() {
@@ -37,6 +37,7 @@ class Selection : AppCompatActivity() {
         val types = arrayOf("Tipo de sección","Rectangular", "Trapezoidal", "Triangular", "Circular", "Parabólico")
         val arrayAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, types)
 
+
         val currentActivity = this@Selection
         sectionTypes.adapter = arrayAdapter
 
@@ -49,6 +50,12 @@ class Selection : AppCompatActivity() {
                 Log.e("selected", (sectionTypes.selectedItem.toString() == "Rectangular").toString())
                 if(sectionTypes.selectedItem.toString() != "Tipo de sección"){
                     canalFragments[sectionTypes.selectedItem.toString()]?.let { loadFragment(it) }
+                }
+                else{
+                    supportFragmentManager.apply {
+                        canalFragments[sectionTypes.selectedItem.toString()]?.let { beginTransaction().remove(it).commit() }
+                        popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+                    }
                 }
             }
 

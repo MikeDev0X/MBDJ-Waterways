@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
@@ -22,14 +23,20 @@ class RectangularResults : AppCompatActivity() {
         val rect_h_plain = findViewById<TextView>(R.id.h_static)
         val rect_b_plain = findViewById<TextView>(R.id.b_static)
 
+        val rect_Q_plain = findViewById<TextView>(R.id.q_static)
+        val rect_n_plain = findViewById<TextView>(R.id.n_static)
+
         //buttons
         val area_button = findViewById<Button>(R.id.rectangular_area)
         val wet_perimeter_button = findViewById<Button>(R.id.rectangular_wet_perimeter)
         val hidraulic_radious_button = findViewById<Button>(R.id.hidraulic_radious_button)
+        val water_mirror_button = findViewById<Button>(R.id.water_mirror_button)
 
         //data from rectangular fragment
         rect_h_plain.text = intent.getStringExtra("rect_h")
         rect_b_plain.text = intent.getStringExtra("rect_b")
+        rect_Q_plain.text = intent.getStringExtra("rect_Q")
+        rect_n_plain.text = intent.getStringExtra("rect_n")
 
         //linear layouts
         val rectangular_area_layout = findViewById<LinearLayout>(R.id.rectangular_area_layout)
@@ -41,6 +48,8 @@ class RectangularResults : AppCompatActivity() {
         val rectangular_hidraulic_radious_layout = findViewById<LinearLayout>(R.id.rectangular_hidraulic_radious_layout)
         val rectangular_hidraulic_radious_layout_params : ViewGroup.LayoutParams = rectangular_hidraulic_radious_layout.layoutParams
 
+        val rectangular_water_mirror_layout = findViewById<LinearLayout>(R.id.rectangular_water_mirror_layout)
+        val rectangular_water_mirror_layout_params : ViewGroup.LayoutParams = rectangular_water_mirror_layout.layoutParams
 
         //main variables
         val h = Integer.parseInt(rect_h_plain.text.toString())
@@ -58,6 +67,8 @@ class RectangularResults : AppCompatActivity() {
         //rectangular_hidraulic_radious_results
         val result_hidraulic_radious = (b*h)/(b+ (2*h))
 
+
+
         // results text views
         val middle_area_result = findViewById<TextView>(R.id.middle_area_result)
         val final_area_result = findViewById<TextView>(R.id.final_area_result)
@@ -66,7 +77,10 @@ class RectangularResults : AppCompatActivity() {
         val final_wet_perimeter_result = findViewById<TextView>(R.id.final_wet_perimeter_result)
 
         val middle_hidraulic_radious_result = findViewById<TextView>(R.id.middle_hidraulic_radious_result)
+        val penultimate_hidraulic_radious_result = findViewById<TextView>(R.id.penultimate_hidraulic_radious_result)
         val final_hidraulic_radious_result = findViewById<TextView>(R.id.final_hidraulic_radious_result)
+
+        val final_water_mirror_result = findViewById<TextView>(R.id.final_water_mirror_result)
 
         //results strings
             // area
@@ -77,8 +91,10 @@ class RectangularResults : AppCompatActivity() {
             final_wet_perimeter_result.text = result_wet_perimeter.toString() + " m"
             //hidraulic radious
             middle_hidraulic_radious_result.text = "(" + bText + "m) (" + hText + "m) / (" + bText + "m + 2(" + hText + "m))"
-            final_hidraulic_radious_result.text = "(" + (b*h).toString() + "m) / (" + (b + (2*h)).toString() + "m) = " + result_hidraulic_radious.toString() + "m"
-
+            final_hidraulic_radious_result.text = result_hidraulic_radious.toString() + "m"
+            penultimate_hidraulic_radious_result.text = "(" + (b*h).toString() + "m) / (" + (b + (2*h)).toString() + "m)"
+            //water mirror
+            final_water_mirror_result.text = bText.toString() + " m"
 
 
         area_button.setOnClickListener{
@@ -105,12 +121,23 @@ class RectangularResults : AppCompatActivity() {
 
         hidraulic_radious_button.setOnClickListener{
             if(rectangular_hidraulic_radious_layout_params.height == 0){
-                rectangular_hidraulic_radious_layout_params.height = 500
+                rectangular_hidraulic_radious_layout_params.height = 600
                 rectangular_hidraulic_radious_layout.layoutParams = rectangular_hidraulic_radious_layout_params
             }
             else{
                 rectangular_hidraulic_radious_layout_params.height = 0
                 rectangular_hidraulic_radious_layout.layoutParams = rectangular_hidraulic_radious_layout_params
+            }
+        }
+
+        water_mirror_button.setOnClickListener{
+            if(rectangular_water_mirror_layout_params.height == 0){
+                rectangular_water_mirror_layout_params.height = 350
+                rectangular_water_mirror_layout.layoutParams = rectangular_water_mirror_layout_params
+            }
+            else{
+                rectangular_water_mirror_layout_params.height = 0
+                rectangular_water_mirror_layout.layoutParams = rectangular_water_mirror_layout_params
             }
         }
 

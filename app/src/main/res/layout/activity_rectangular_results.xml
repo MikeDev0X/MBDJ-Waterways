@@ -120,6 +120,86 @@
             android:textColor="@color/black" />
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/imageView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout">
+
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:fontFamily="@font/roboto"
+            android:text="Datos:        Q = "
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/Q_oval"
+            android:layout_width="80dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="25dp"
+            android:background="@drawable/black_text_input_oval"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/q_static"
+                android:layout_width="35dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"
+                android:background="@null"
+                android:ems="10"
+                android:inputType="phone"
+                android:paddingStart="10dp"
+                android:paddingEnd="5dp"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textView20"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:text="m^3/s"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:fontFamily="@font/roboto"
+            android:text="n = "
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+
+        <EditText
+            android:id="@+id/n_static"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="@drawable/black_text_input_oval"
+            android:ems="10"
+            android:inputType="phone"
+            android:paddingStart="10dp"
+            android:paddingEnd="5dp"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+
+    </LinearLayout>
+
+
 
 
     <ScrollView
@@ -371,7 +451,7 @@
             <LinearLayout
                 android:id="@+id/rectangular_hidraulic_radious_layout"
                 android:layout_width="match_parent"
-                android:layout_height="500px"
+                android:layout_height="0dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:background="@drawable/result_square"
@@ -379,7 +459,7 @@
 
                 <TextView
                     android:id="@+id/textView8"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="20dp"
@@ -440,6 +520,39 @@
                         android:textStyle="italic" />
 
                     <TextView
+                        android:id="@+id/penultimate_hidraulic_radious_result"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/roboto"
+                        android:text=""
+                        android:textAlignment="textStart"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="italic" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView13"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/roboto"
+                        android:text="Ph = "
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="italic" />
+
+                    <TextView
                         android:id="@+id/final_hidraulic_radious_result"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -457,6 +570,80 @@
 
             </LinearLayout>
 
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/water_mirror_button"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/btn_results"
+                android:fontFamily="@font/roboto"
+                android:paddingStart="20dp"
+                android:text="Espejo de Agua"
+                android:textAlignment="textStart"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/rectangular_water_mirror_layout"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/result_square"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView14"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/roboto"
+                    android:text="T = b"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="italic" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView15"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/roboto"
+                        android:text="T = "
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="italic" />
+
+                    <TextView
+                        android:id="@+id/final_water_mirror_result"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/roboto"
+                        android:text=""
+                        android:textAlignment="textStart"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="italic" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
 
 
         </LinearLayout>
