@@ -5,19 +5,26 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 class RectangularResults : AppCompatActivity() {
 
-    fun cropDecimals(s: String, n: Int): String {
-        return String.format("%.${n}")
-    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         getSupportActionBar()?.hide()
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_rectangular_results)
+
+        fun cropDecimals(num: Double, n: Int): String {
+            val finalString = String.format("%.${n}f", num)
+            Toast.makeText(this, finalString, Toast.LENGTH_SHORT).show()
+
+            return finalString
+        }
+
 
         val rect_h_plain = findViewById<TextView>(R.id.h_static)
         val rect_b_plain = findViewById<TextView>(R.id.b_static)
@@ -77,19 +84,19 @@ class RectangularResults : AppCompatActivity() {
 
 
         //rectangular_area_results
-        val result_area = h*b
+        val result_area = (h*b).toDouble()
 
         //rectangular_wet_perimeter_results
-        val result_wet_perimeter = b + (2 * h)
+        val result_wet_perimeter = (b + (2 * h)).toDouble()
 
         //rectangular_hidraulic_radious_results
-        val result_hidraulic_radious = (b*h)/(b+ (2*h))
+        val result_hidraulic_radious = ((b*h)/(b+ (2*h))).toDouble()
 
         //rectangular_critical_tension_results
         val result_critical_tension = Math.pow(((Math.pow(Q.toDouble(),2.0)) / (9.81 * b)),(0.333333))
 
         //rectangular_velocity_results
-        val result_velocity = Q / (b*h)
+        val result_velocity = (Q / (b*h)).toDouble()
 
         //rectangular_slope_results
         val result_slope = Math.pow(((Q * n) / ((b*h)*(Math.pow(((b*h) / (b + 2*h)).toDouble(),0.66666)))), 2.0)
@@ -124,28 +131,28 @@ class RectangularResults : AppCompatActivity() {
             //results strings
             // area
             middle_area_result.text = "(" + bText + " m)(" + hText + " m)"
-            final_area_result.text = result_area.toString() + " m^2"
+            final_area_result.text = cropDecimals(result_area,3) + " m^2"
             // wet perimeter
             middle_wet_perimeter_result.text = bText + " m + " + "2(" + hText + " m)"
-            final_wet_perimeter_result.text = result_wet_perimeter.toString() + " m"
+            final_wet_perimeter_result.text = cropDecimals(result_wet_perimeter, 3)  + " m"
             //hidraulic radious
             middle_hidraulic_radious_result.text = "(" + bText + "m) (" + hText + "m) / (" + bText + "m + 2(" + hText + "m))"
-            penultimate_hidraulic_radious_result.text = "(" + (b*h).toString() + "m) / (" + (b + (2*h)).toString() + "m)"
-            final_hidraulic_radious_result.text = result_hidraulic_radious.toString() + " m"
+            penultimate_hidraulic_radious_result.text = "(" + (cropDecimals((b*h).toDouble(),3)).toString() + "m) / (" +  cropDecimals((b + (2*h)).toDouble(),3) + "m)"
+            final_hidraulic_radious_result.text = cropDecimals(result_hidraulic_radious,3)  + " m"
             //water mirror
-            final_water_mirror_result.text = bText.toString() + " m"
+            final_water_mirror_result.text = cropDecimals(b.toDouble(),3) + " m"
             //critical tension
             second_critical_tension_result.text = "[" + QText + "^2 / (9.81)(" + bText + ") ] ^(1/3)"
-            third_critical_tension_result.text = "[" + (Math.pow(Q.toDouble(), 2.0)) + " / (" + (9.81*b).toString() + ") ] ^(1/3)"
-            penultimate_critical_tension_result.text = "[" + ((Math.pow(Q.toDouble(),2.0))/(9.81*b)).toString() + "] ^(1/3)"
-            final_critical_tension_result.text =result_critical_tension.toString() + " m"
+            third_critical_tension_result.text = "[" + cropDecimals((Math.pow(Q.toDouble(), 2.0)),3) + " / (" + cropDecimals(9.81*b,3) + ") ] ^(1/3)"
+            penultimate_critical_tension_result.text = "[" + cropDecimals(((Math.pow(Q.toDouble(),2.0))/(9.81*b)),3) + "] ^(1/3)"
+            final_critical_tension_result.text = cropDecimals( result_critical_tension, 3) + " m"
             //velocity
-            middle_velocity_result.text = QText + " / " + (b*h).toString()
-            final_velocity_result.text = result_velocity.toString() + " m/s"
+            middle_velocity_result.text = QText + " / " + cropDecimals ((b*h).toDouble(),3)
+            final_velocity_result.text = cropDecimals(result_velocity, 3) + " m/s"
             //slope
-            middle_slope_result.text = "((" + QText + " * " + nText + ") / (" + (b*h).toString() + " * " + Math.pow(((b*h) / (b + 2*h)).toDouble(),0.66666).toString() + ") ^ 2"
-            penultimate_slope_result.text = ((Q * n) / ((b*h)*(Math.pow(((b*h) / (b + 2*h)).toDouble(),0.66666)))).toString() + " ^2"
-            final_slope_result.text = result_slope.toString() + " m"
+            middle_slope_result.text = "((" + QText + " * " + nText + ") / (" + (b*h).toString() + " * " + cropDecimals(Math.pow(((b*h) / (b + 2*h)).toDouble(),0.66666),3) + ") ^ 2"
+            penultimate_slope_result.text = cropDecimals(((Q * n) / (((b*h)*(Math.pow(((b*h) / (b + 2*h)).toDouble(),0.66666))))),3) + " ^2"
+            final_slope_result.text = cropDecimals(result_slope, 3) + " m"
 
 
         area_button.setOnClickListener{
@@ -216,7 +223,7 @@ class RectangularResults : AppCompatActivity() {
 
         slope_button.setOnClickListener{
             if(rectangular_slope_layout.height == 0){
-                rectangular_slope_layout_params.height = 725
+                rectangular_slope_layout_params.height = 650
                 rectangular_slope_layout.layoutParams = rectangular_slope_layout_params
             }
             else {
