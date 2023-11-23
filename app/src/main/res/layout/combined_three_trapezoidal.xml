@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="300dp"
+        android:layout_height="250dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.095"
+        app:srcCompat="@drawable/combined_3_trapezoidal" />
+
+    <EditText
+        android:id="@+id/h1"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/black_text_input_oval"
+        android:ems="10"
+        android:inputType="phone"
+        android:paddingLeft="10dp"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/imageView8"
+        app:layout_constraintEnd_toEndOf="@id/imageView8"
+        app:layout_constraintHorizontal_bias="0.053"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView8"
+        app:layout_constraintVertical_bias="0.733" />
+
+    <EditText
+        android:id="@+id/h3"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/black_text_input_oval"
+        android:ems="10"
+        android:inputType="phone"
+        android:paddingLeft="10dp"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/imageView8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.947"
+        app:layout_constraintStart_toStartOf="@id/imageView8"
+        app:layout_constraintTop_toTopOf="@+id/imageView8"
+        app:layout_constraintVertical_bias="0.733" />
+
+    <EditText
+        android:id="@+id/h2"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/fill_black_text_input_oval"
+        android:ems="10"
+        android:inputType="phone"
+        android:paddingLeft="10dp"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/imageView8"
+        app:layout_constraintEnd_toEndOf="@id/imageView8"
+        app:layout_constraintHorizontal_bias="0.65"
+        app:layout_constraintStart_toStartOf="@id/imageView8"
+        app:layout_constraintTop_toTopOf="@+id/imageView8"
+        app:layout_constraintVertical_bias="0.427" />
+
+    <EditText
+        android:id="@+id/B1"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/black_text_input_oval"
+        android:ems="10"
+        android:inputType="phone"
+        android:paddingLeft="10dp"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/imageView8"
+        app:layout_constraintEnd_toEndOf="@id/imageView8"
+        app:layout_constraintHorizontal_bias="0.227"
+        app:layout_constraintStart_toStartOf="@id/imageView8"
+        app:layout_constraintTop_toTopOf="@+id/imageView8"
+        app:layout_constraintVertical_bias="0.873" />
+
+    <EditText
+        android:id="@+id/B2"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/black_text_input_oval"
+        android:ems="10"
+        android:inputType="phone"
+        android:paddingLeft="10dp"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/imageView8"
+        app:layout_constraintEnd_toEndOf="@id/imageView8"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="@id/imageView8"
+        app:layout_constraintTop_toTopOf="@+id/imageView8"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <EditText
+        android:id="@+id/B3"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/black_text_input_oval"
+        android:ems="10"
+        android:inputType="phone"
+        android:paddingLeft="10dp"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/imageView8"
+        app:layout_constraintEnd_toEndOf="@id/imageView8"
+        app:layout_constraintHorizontal_bias="0.788"
+        app:layout_constraintStart_toStartOf="@id/imageView8"
+        app:layout_constraintTop_toTopOf="@+id/imageView8"
+        app:layout_constraintVertical_bias="0.873" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

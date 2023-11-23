@@ -20,17 +20,16 @@ class RectangularResults : AppCompatActivity() {
 
         fun cropDecimals(num: Double, n: Int): String {
             val finalString = String.format("%.${n}f", num)
-            Toast.makeText(this, finalString, Toast.LENGTH_SHORT).show()
-
             return finalString
         }
-
 
         val rect_h_plain = findViewById<TextView>(R.id.h_static)
         val rect_b_plain = findViewById<TextView>(R.id.b_static)
 
         val rect_Q_plain = findViewById<TextView>(R.id.q_static)
         val rect_n_plain = findViewById<TextView>(R.id.n_static)
+
+        val decimals = intent.getStringExtra("decimals")
 
         //buttons
         val area_button = findViewById<Button>(R.id.rectangular_area)
@@ -131,28 +130,47 @@ class RectangularResults : AppCompatActivity() {
             //results strings
             // area
             middle_area_result.text = "(" + bText + " m)(" + hText + " m)"
-            final_area_result.text = cropDecimals(result_area,3) + " m^2"
+            if (decimals != null) {
+                final_area_result.text = cropDecimals(result_area,decimals.toInt()) + " m^2"
+            }
             // wet perimeter
             middle_wet_perimeter_result.text = bText + " m + " + "2(" + hText + " m)"
-            final_wet_perimeter_result.text = cropDecimals(result_wet_perimeter, 3)  + " m"
+            if (decimals != null) {
+                final_wet_perimeter_result.text = cropDecimals(result_wet_perimeter, decimals.toInt())  + " m"
+            }
+
             //hidraulic radious
             middle_hidraulic_radious_result.text = "(" + bText + "m) (" + hText + "m) / (" + bText + "m + 2(" + hText + "m))"
-            penultimate_hidraulic_radious_result.text = "(" + (cropDecimals((b*h).toDouble(),3)).toString() + "m) / (" +  cropDecimals((b + (2*h)).toDouble(),3) + "m)"
-            final_hidraulic_radious_result.text = cropDecimals(result_hidraulic_radious,3)  + " m"
+            if (decimals != null) {
+                penultimate_hidraulic_radious_result.text = "(" + (cropDecimals((b*h).toDouble(),decimals.toInt())).toString() + "m) / (" +  cropDecimals((b + (2*h)).toDouble(),decimals.toInt()) + "m)"
+                final_hidraulic_radious_result.text = cropDecimals(result_hidraulic_radious,decimals.toInt())  + " m"
+            }
+
             //water mirror
-            final_water_mirror_result.text = cropDecimals(b.toDouble(),3) + " m"
+            if (decimals != null) {
+                final_water_mirror_result.text = cropDecimals(b.toDouble(),decimals.toInt()) + " m"
+            }
+
             //critical tension
             second_critical_tension_result.text = "[" + QText + "^2 / (9.81)(" + bText + ") ] ^(1/3)"
-            third_critical_tension_result.text = "[" + cropDecimals((Math.pow(Q.toDouble(), 2.0)),3) + " / (" + cropDecimals(9.81*b,3) + ") ] ^(1/3)"
-            penultimate_critical_tension_result.text = "[" + cropDecimals(((Math.pow(Q.toDouble(),2.0))/(9.81*b)),3) + "] ^(1/3)"
-            final_critical_tension_result.text = cropDecimals( result_critical_tension, 3) + " m"
+            if (decimals != null) {
+                third_critical_tension_result.text = "[" + cropDecimals((Math.pow(Q.toDouble(), 2.0)),decimals.toInt()) + " / (" + cropDecimals(9.81*b,decimals.toInt()) + ") ] ^(1/3)"
+                penultimate_critical_tension_result.text = "[" + cropDecimals(((Math.pow(Q.toDouble(),2.0))/(9.81*b)),decimals.toInt()) + "] ^(1/3)"
+                final_critical_tension_result.text = cropDecimals( result_critical_tension, decimals.toInt()) + " m"
+            }
+
             //velocity
-            middle_velocity_result.text = QText + " / " + cropDecimals ((b*h).toDouble(),3)
-            final_velocity_result.text = cropDecimals(result_velocity, 3) + " m/s"
+            if (decimals != null) {
+                middle_velocity_result.text = QText + " / " + cropDecimals ((b*h).toDouble(),decimals.toInt())
+                final_velocity_result.text = cropDecimals(result_velocity, decimals.toInt()) + " m/s"
+            }
+
             //slope
-            middle_slope_result.text = "((" + QText + " * " + nText + ") / (" + (b*h).toString() + " * " + cropDecimals(Math.pow(((b*h) / (b + 2*h)).toDouble(),0.66666),3) + ") ^ 2"
-            penultimate_slope_result.text = cropDecimals(((Q * n) / (((b*h)*(Math.pow(((b*h) / (b + 2*h)).toDouble(),0.66666))))),3) + " ^2"
-            final_slope_result.text = cropDecimals(result_slope, 3) + " m"
+        if (decimals != null) {
+            middle_slope_result.text = "((" + QText + " * " + nText + ") / (" + (b*h).toString() + " * " + cropDecimals(Math.pow(((b*h) / (b + 2*h)).toDouble(),0.66666),decimals.toInt()) + ") ^ 2"
+            penultimate_slope_result.text = cropDecimals(((Q * n) / (((b*h)*(Math.pow(((b*h) / (b + 2*h)).toDouble(),0.66666))))),decimals.toInt()) + " ^2"
+            final_slope_result.text = cropDecimals(result_slope, decimals.toInt()) + " m"
+        }
 
 
         area_button.setOnClickListener{

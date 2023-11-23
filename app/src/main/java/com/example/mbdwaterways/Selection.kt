@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.RadioButton
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -34,12 +35,29 @@ class Selection : AppCompatActivity() {
 
         val sectionTypes = findViewById<Spinner>(R.id.section_types_spinner)
 
-        val types = arrayOf("Tipo de sección","Rectangular", "Trapezoidal", "Triangular", "Circular", "Parabólico")
-        val arrayAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, types)
+        val sections1 = findViewById<RadioButton>(R.id.sections_1)
+        val sections2 = findViewById<RadioButton>(R.id.sections_2)
 
 
-        val currentActivity = this@Selection
-        sectionTypes.adapter = arrayAdapter
+
+        val types = arrayOf("Tipo de sección","Rectangular", "Triangular")
+        val types2 = arrayOf("Tipo de sección", "Circular", "Parabólica", "Trapezoidal")
+
+
+        sections1.setOnCheckedChangeListener { button, b ->
+            if(b){
+                val arrayAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, types)
+                sectionTypes.adapter = arrayAdapter
+            }
+        }
+
+        sections2.setOnCheckedChangeListener { button, b ->
+            if(b){
+                val arrayAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, types2)
+                sectionTypes.adapter = arrayAdapter
+            }
+        }
+
 
         val canalFragments =Canal_Fragments().canalsDic
 
@@ -47,7 +65,6 @@ class Selection : AppCompatActivity() {
 
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
 
-                Log.e("selected", (sectionTypes.selectedItem.toString() == "Rectangular").toString())
                 if(sectionTypes.selectedItem.toString() != "Tipo de sección"){
                     canalFragments[sectionTypes.selectedItem.toString()]?.let { loadFragment(it) }
                 }
@@ -64,6 +81,8 @@ class Selection : AppCompatActivity() {
             }
 
         }
+
+
 
     }
 

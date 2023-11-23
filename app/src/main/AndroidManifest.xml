@@ -7,7 +7,7 @@
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="MBDJ WATERWAYS"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MBDWATERWAYS"
@@ -32,6 +32,46 @@
             android:name=".RectangularResults"
             android:exported="false"
         />
+
+        <activity
+            android:name=".CircularRevision"
+            android:exported="false"
+        />
+
+        <activity
+            android:name=".CircularRevisionOne"
+            android:exported="false"
+            />
+
+        <activity
+            android:name=".CircularRevisionTwo"
+            android:exported="false"
+            />
+
+        <activity
+            android:name=".CircularDesign"
+            android:exported="false"
+            />
+
+        <activity
+            android:name=".CircularDesignOne"
+            android:exported="false"
+            />
+
+        <activity
+            android:name=".TriangularResults"
+            android:exported="false"
+            />
+
+        <activity
+            android:name=".Selection2"
+            android:exported="false"
+            />
+
+        <activity
+            android:name=".CircularAlcantarillado"
+            android:exported="false"
+            />
 
         <meta-data
             android:name="preloaded_fonts"

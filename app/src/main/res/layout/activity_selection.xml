@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/vertical_layout"
         android:layout_width="409dp"
         android:layout_height="94dp"
         android:orientation="vertical"
@@ -35,24 +35,63 @@
         android:id="@+id/waterways_logo"
         android:layout_width="150dp"
         android:layout_height="50dp"
-        app:layout_constraintBottom_toBottomOf="@id/linearLayout"
-        app:layout_constraintEnd_toEndOf="@id/linearLayout"
-        app:layout_constraintStart_toStartOf="@id/linearLayout"
-        app:layout_constraintTop_toTopOf="@id/linearLayout"
+        app:layout_constraintBottom_toBottomOf="@id/vertical_layout"
+        app:layout_constraintEnd_toEndOf="@id/vertical_layout"
+        app:layout_constraintStart_toStartOf="@id/vertical_layout"
+        app:layout_constraintTop_toTopOf="@id/vertical_layout"
         app:layout_constraintVertical_bias="0.3"
         app:srcCompat="@drawable/mbdj" />
 
-    <Spinner
-        android:id="@+id/section_types_spinner"
-        android:layout_width="320dp"
-        android:layout_height="40dp"
-        android:background="@drawable/btn_section"
-        android:paddingLeft="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <TableLayout
+        android:id="@+id/table"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/fragmentContainerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.02" />
+        app:layout_constraintTop_toBottomOf="@+id/vertical_layout"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TableRow
+            android:layout_width="250dp"
+            android:layout_height="match_parent"
+            >
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/sections_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:text="Secciones 1" />
+
+                <RadioButton
+                    android:id="@+id/sections_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Secciones 2" />
+            </RadioGroup>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Spinner
+                android:id="@+id/section_types_spinner"
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:background="@drawable/btn_section"
+                android:paddingLeft="10dp" />
+
+
+        </TableRow>
+    </TableLayout>
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView"
@@ -60,9 +99,9 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/section_types_spinner"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@id/table" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
