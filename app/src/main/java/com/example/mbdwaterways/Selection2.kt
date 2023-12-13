@@ -53,9 +53,6 @@ class Selection2 : AppCompatActivity() {
 
         }
 
-
-
-
     }
 
 }

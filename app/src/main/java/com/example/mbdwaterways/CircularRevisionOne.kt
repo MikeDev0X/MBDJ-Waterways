@@ -71,6 +71,7 @@ class CircularRevisionOne : AppCompatActivity() {
                 decidingFactor = smallest
             }
 
+            //Initial critical tight based on its rounding
             tempYc = Y - (Y*(0.15*(decidingFactor/10)))
 
 
@@ -88,32 +89,17 @@ class CircularRevisionOne : AppCompatActivity() {
 
             while (true){
 
-                Log.e("tempYc", tempYc.toString())
-
                 tempAngle = 2*(Math.acos((1 - (2*tempYc / D))))
                 tempArea = ((tempAngle - Math.sin(tempAngle)) * Math.pow(D,2.0)) / 8
                 tempWaterMirror = (Math.sin(tempAngle/2)) * D
                 tempFc = (tempArea.pow(3.0) / tempWaterMirror) - (Q.pow(2.0) / 9.81)
 
-                Log.e("Angle", tempAngle.toString())
-                Log.e("Area", tempArea.toString())
-                Log.e("Water_mirror", tempWaterMirror.toString())
-                Log.e("tempFc", tempFc.toString())
-
-                Log.e("fixedQ", Q.toString())
-
                 tempFcp = (3 * Math.pow(tempArea,2.0) - ((Math.pow(tempArea,3.0) / Math.pow(tempWaterMirror,2.0)   ) * (( 1 - ((2*tempYc)/D)) / (Math.pow(((tempYc/D) * (1 - (tempYc / D))),0.5))))       )
-
-                Log.e("initialYc", tempYc.toString())
-                Log.e("tempFcp", tempFcp.toString())
 
                 tempYc_plus_one = (tempYc - ((tempFc)/(tempFcp)))
 
                 flooredYc = Math.round(tempYc * 1000000.0) / 1000000.0
                 flooredYcPlusOne = Math.round(tempYc_plus_one * 1000000.0) / 1000000.0
-
-                Log.e("flooredYc", flooredYc.toString())
-                Log.e("flooredYcPlusOne", flooredYcPlusOne.toString())
 
                 if(flooredYc == flooredYcPlusOne){
                     //store final values
@@ -132,7 +118,6 @@ class CircularRevisionOne : AppCompatActivity() {
                 counter = counter + 1
 
             }
-            return -1.0
         }
 
         val finalCriticalTight = calculateCriticalTight(Y)
